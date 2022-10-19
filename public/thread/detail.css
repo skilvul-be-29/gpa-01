@@ -1,0 +1,25 @@
+.thread-content {
+  margin-top: 2rem;
+  font-size: 18px;
+}
+
+.thread-comments {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.comment {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  gap: 1rem;
+}
+
+.comment-author {
+  color: black;
+}
+
+.comment-content {
+  flex-grow: 2;
+}

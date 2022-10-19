@@ -4,25 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    />
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="index.css" />
     <title>Threads</title>
     <script defer src="index.js" type="module"></script>
   </head>
   <body>
-    <div class="container py-5">
-      <a class="btn btn-primary mb-4" href="./create.html" role="button">Create New Thread</a>
-      <div class="row" id="threads"></div>
-    </div>
+    <main>
+      <h1 class="fw-bold">Threads</h1>
+      <section class="threads">
+        <acticle class="card text-black">
+          <header>
+            <div class="meta">
+              <img
+                class="avatar-small"
+                src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp"
+                alt="User avatar"
+              />
+              Posted by <a href="#">Author Name</a> ·
+              <span>October 20th, 2022</span>
+            </div>
+            <a class="text-black" href="/thread/detail.html?id=1">
+              <h2 class="title fw-bold text-black">Thread Title</h2>
+            </a>
+          </header>
+          <section>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis inventore perspiciatis veritatis nobis
+            reprehenderit accusantium nihil voluptatum aliquam fugiat assumenda. Magnam distinctio minus temporibus
+            placeat doloribus maiores! Optio, sed aspernatur maxime earum officia voluptates laboriosam alias voluptatem
+            eligendi ut quae quasi quibusdam sit cumque nulla harum animi error dolorem molestiae!
+          </section>
+        </acticle>
+      </section>
+    </main>
   </body>
 </html>
