@@ -15,7 +15,7 @@ function buildThreadCard({ id, title, content }) {
   return `
     <div class="col-md-4">
       <a href="detail.html?id=${id}">
-        <div class="card">
+        <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">${title}</h5>
             <p class="card-text">${content}</p>
