@@ -9,4 +9,4 @@ export async function createThread(payload) {
     body: JSON.stringify(payload),
   });
   return response.json();
-};
+}
