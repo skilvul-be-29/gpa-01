@@ -14,10 +14,6 @@
   gap: 8px;
 }
 
-.comment-author {
-  color: black;
-}
-
 .comment-content {
   flex-grow: 2;
 }
