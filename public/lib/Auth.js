@@ -1,10 +1,10 @@
-import { createUser } from "./createUser.js";
-import { getUsers } from "./getUsers.js";
+import { createUser } from './createUser.js';
+import { getUsers } from './getUsers.js';
 
 export class Auth {
   constructor() {
     if (this instanceof Auth) {
-      throw Error("A static class cannot be instantiated.");
+      throw Error('A static class cannot be instantiated.');
     }
   }
 
@@ -14,12 +14,12 @@ export class Auth {
     if (!user || user.password !== password) {
       return false;
     }
-    localStorage.setItem("currentUser", JSON.stringify(user));
+    localStorage.setItem('currentUser', JSON.stringify(user));
     return true;
   }
 
   static signOut() {
-    localStorage.removeItem("currentUser");
+    localStorage.removeItem('currentUser');
   }
 
   static async signUp(username, password) {
@@ -36,6 +36,6 @@ export class Auth {
    * @returns {{id: number, username: string, avatar: string} | null}
    */
   static get currentUser() {
-    return JSON.parse(localStorage.getItem("currentUser"));
+    return JSON.parse(localStorage.getItem('currentUser'));
   }
 }
