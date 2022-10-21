@@ -10,3 +10,13 @@ export async function createUser(username, password) {
   });
   return await response.json();
 }
+
+export async function getUser(id) {
+  const response = await fetch(`${API_URL}/users/${id}`);
+  return response.json();
+}
+
+export async function getUsers() {
+  const response = await fetch(`${API_URL}/users`);
+  return await response.json();
+}

@@ -1,22 +1,23 @@
-import { createThread } from '../lib/createThread.js';
-import { DETAIL_PAGE } from '../constants/constants.js';
+import { Auth } from '../lib/Auth.js';
+import { createThread } from '../lib/threads.js';
 
-async function send({ title, content }) {
-  // TODO: userId ambil dari localstorage
-  const userId = 1;
-
-  const createdThread = await createThread({ title, content, userId });
-
-  window.location.replace(`./${DETAIL_PAGE}?id=${createdThread.id}`);
+if (!Auth.currentUser) {
+  window.location.replace('/signin/');
 }
 
-async function submitForm(event) {
+const form = document.querySelector('form');
+form.addEventListener('submit', async (event) => {
   event.preventDefault();
+  const formData = new FormData(form);
+  const title = formData.get('title').trim();
+  const content = formData.get('content').trim();
 
-  const title = document.getElementById('title').value;
-  const content = document.getElementById('content').value;
+  if (title === '' || content === '') {
+    alert('Please fill all the fields');
+    return;
+  }
 
-  await send({ title, content });
-}
-
-document.getElementById('submit').addEventListener('click', submitForm);
+  const userId = 1;
+  const createdThread = await createThread({ title, content, userId });
+  window.location.replace(`/thread/detail.html?id=${createdThread.id}`);
+});
