@@ -1,0 +1,23 @@
+main {
+  margin-top: 2rem;
+}
+
+.thread-content {
+  font-size: 18px;
+}
+
+.thread-comments {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comment {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.comment-content {
+  flex-grow: 2;
+}

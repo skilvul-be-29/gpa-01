@@ -1,5 +1,4 @@
-import { createUser } from './createUser.js';
-import { getUsers } from './getUsers.js';
+import { createUser, getUsers } from './users.js';
 
 export class Auth {
   constructor() {

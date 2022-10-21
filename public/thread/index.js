@@ -1,37 +1,34 @@
-import { getThreads } from '../lib/getThreads.js';
+import { getThreads } from '../lib/threads.js';
+import { setupNavbar } from '../lib/setupNavbar.js';
 
-let threads = [];
+setupNavbar(document.body);
 
-async function load() {
-  threads = await getThreads();
-  refresh();
-}
+document.getElementById('create-thread').addEventListener('click', () => {
+  window.location.href = '/thread/create.html';
+});
 
-function buildThreadCard({ id, title, content }) {
-  if (content.length > 50) {
-    content = content.substring(0, 47) + '...';
-  }
+const threads = await getThreads();
+const threadsHtml = document.querySelector('.threads');
 
+threads.forEach((thread) => {
+  threadsHtml.innerHTML += buildThreadCard(thread);
+});
+
+function buildThreadCard({ createdAt, id, title, user, comments }) {
+  const date = new Date(createdAt);
   return `
-    <div class="col-md-4">
-      <a href="detail.html?id=${id}">
-        <div class="card h-100">
-          <div class="card-body">
-            <h5 class="card-title">${title}</h5>
-            <p class="card-text">${content}</p>
-          </div>
+    <div class="card">
+      <header>
+        <div class="meta">
+          <img class="avatar-small" src="${user.avatar}" alt="${user.username}" />
+          <a class="text-black" href="#">${user.username}</a> ·
+          <span>${date.toDateString()}</span>
         </div>
-      </a>
+        <a class="text-black" href="/thread/detail.html?id=${id}">
+          <h2 class="title fw-bold text-black">${title}</h2>
+        </a>
+      </header>
+      <section>${comments.length} Comments</section>
     </div>
   `;
 }
-
-function refresh() {
-  const threadsHtml = document.getElementById('threads');
-
-  threads.forEach((thread) => {
-    threadsHtml.innerHTML += buildThreadCard(thread);
-  });
-}
-
-window.onload = load;
