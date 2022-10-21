@@ -1,7 +1,9 @@
 {
   "editor.formatOnSave": true,
   "files.eol": "\n",
-  "editor.rulers": [120],
+  "editor.rulers": [
+    120
+  ],
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "[html]": {
@@ -9,5 +11,6 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "liveServer.settings.root": "/public"
 }
