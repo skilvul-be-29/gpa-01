@@ -1,5 +1,7 @@
+import { Auth } from '../lib/Auth.js';
 import { setupNavbar } from '../lib/setupNavbar.js';
 import { getThread } from '../lib/threads.js';
+import { createComment } from '../lib/comments.js';
 
 setupNavbar(document.body);
 
@@ -13,6 +15,13 @@ const thread = await getThread(id);
 document.querySelector('main').innerHTML = buildThreadCard(thread);
 
 function buildThreadCard({ createdAt, title, content, user }) {
+  const comments = thread.comments;
+
+  let commentsHtml = '';
+  comments.forEach((comment) => {
+    commentsHtml += buildCommentCard(comment);
+  });
+
   const date = new Date(createdAt);
   return `
     <article>
@@ -34,31 +43,63 @@ function buildThreadCard({ createdAt, title, content, user }) {
             <img class="avatar" src="${user.avatar}" alt="${user.username}" />
           </div>
           <div class="comment-content">
-            <textarea name="comment" placeholder="Write a comment..."></textarea>
-            <button type="submit">Submit</button>
+            <textarea id="content" name="comment" placeholder="Write a comment..."></textarea>
+            <button type="submit" id="commentSubmit">Submit</button>
           </div>
         </form>
         <!-- Comment Template -->
-        <div class="comment">
-          <div>
-            <img
-              class="avatar"
-              src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp"
-              alt="User avatar"
-            />
-          </div>
-          <div class="comment-content card">
-            <a href="#" class="text-black"><b>Comment Author</b></a>
-            <span> · 1m ago</span>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae saepe architecto distinctio repellat
-              delectus velit ullam earum, incidunt nihil, provident voluptatem quasi reiciendis est nesciunt nam culpa
-              ex aut rerum. Nemo molestias voluptatibus laboriosam, eius quos sint molestiae soluta eaque officia
-              nostrum maiores vel error veniam ea neque itaque mollitia?
-            </p>
-          </div>
-        </div>
+        ${commentsHtml}
       </section>
     </article>
   `;
 }
+
+function buildCommentCard({ content, createdAt, user: { username, avatar } }) {
+  const now = new Date();
+  const createdAtDate = new Date(createdAt);
+
+  const diffMs = Math.abs(createdAtDate - now);
+  const diffMinute = Math.ceil(diffMs / (1000 * 60));
+
+  return `
+    <div class="comment">
+      <div>
+        <img
+          class="avatar"
+          src="${avatar}"
+          alt="User avatar"
+        />
+      </div>
+      <div class="comment-content card">
+        <a href="#" class="text-black"><b>${username}</b></a>
+        <span> · ${diffMinute}m ago</span>
+        <p>
+          ${content}
+        </p>
+      </div>
+    </div>
+  `;
+}
+
+document.querySelector('main').addEventListener(
+  'click',
+  async function (event) {
+    if (event.target === document.querySelector('#commentSubmit')) {
+      event.preventDefault();
+
+      const content = document.querySelector('#content').value;
+
+      if (content === '') {
+        alert("Content shouldn't be empty");
+        return;
+      }
+
+      const userId = Auth.currentUser.id;
+      const threadId = id;
+
+      await createComment(content, userId, threadId);
+      window.location.reload();
+    }
+  },
+  true
+);
