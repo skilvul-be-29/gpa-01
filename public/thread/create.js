@@ -6,6 +6,7 @@ if (!Auth.currentUser) {
 }
 
 const form = document.querySelector('form');
+
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   const formData = new FormData(form);
@@ -17,7 +18,7 @@ form.addEventListener('submit', async (event) => {
     return;
   }
 
-  const userId = 1;
-  const createdThread = await createThread({ title, content, userId });
-  window.location.replace(`/thread/detail.html?id=${createdThread.id}`);
+  const userId = Auth.currentUser.id;
+  const thread = await createThread({ title, content, userId });
+  window.location.replace(`/thread/detail.html?id=${thread.id}`);
 });

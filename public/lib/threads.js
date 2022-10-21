@@ -2,13 +2,13 @@ import { API_URL } from '../constants/API_URL.js';
 import { getComments } from './comments.js';
 import { getUser } from './users.js';
 
-export async function createThread(payload) {
+export async function createThread(title, content, userId, createdAt = new Date()) {
   const response = await fetch(`${API_URL}/threads`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify({ title, content, userId, createdAt }),
   });
   return response.json();
 }
