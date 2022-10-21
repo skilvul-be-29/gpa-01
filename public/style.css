@@ -1,16 +1,13 @@
-@import url("https://cdn.jsdelivr.net/npm/water.css@2/out/light.css");
+@import url('https://cdn.jsdelivr.net/npm/water.css@2/out/light.css');
+
+:root {
+  --focus: #000;
+  --button-base: #25292f;
+  --button-hover: #454545;
+}
 
 button {
   color: #fff;
-  background-color: #25292f;
-  font-weight: bold;
-}
-
-button:hover {
-  background-color: #454545;
-}
-
-.fw-bold {
   font-weight: bold;
 }
 
@@ -22,10 +19,6 @@ button:hover {
 
 .title {
   margin: 0;
-}
-
-.text-black {
-  color: #000;
 }
 
 .avatar {
@@ -46,15 +39,81 @@ button:hover {
   max-height: 20px;
 }
 
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: grey;
+  font-size: 14px;
+  gap: 6px;
+}
+
+/* Navbar Styles */
+nav {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 16px;
+}
+
+nav > button {
+  margin: 0;
+}
+
+.nav-logo {
+  flex: 2;
+}
+
+.nav-logo img {
+  margin-bottom: 6px;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(140, 149, 159, 0.2);
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 160px;
+  padding: 0.5rem;
+}
+
+details {
+  margin: 0;
+}
+
+summary {
+  background: #fff;
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 4px 8px 4px 16px;
+  overflow: hidden;
+  color: var(--color-fg-default);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Utilities */
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-bold {
+  font-weight: bold;
+}
+
 .pointer {
   cursor: pointer;
 }
 
-.meta {
-  color: grey;
-  font-size: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
+.text-black {
+  color: #000;
 }

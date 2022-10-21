@@ -1,5 +1,3 @@
-import { Auth } from './lib/Auth.js';
+import { setupNavbar } from './lib/setupNavbar.js';
 
-document.getElementById('signout').addEventListener('click', (event) => {
-  Auth.signOut();
-});
+setupNavbar(document.body);
