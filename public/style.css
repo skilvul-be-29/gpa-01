@@ -68,6 +68,29 @@ nav > button {
   margin-bottom: 6px;
 }
 
+details {
+  margin: 0;
+}
+
+summary {
+  background: #fff;
+  list-style: none;
+  padding: 0;
+}
+
+details[open] > summary::before {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 80;
+  display: block;
+  cursor: default;
+  content: ' ';
+  background: transparent;
+}
+
 .dropdown-menu {
   display: flex;
   flex-direction: column;
@@ -80,23 +103,14 @@ nav > button {
   right: 0;
   width: 160px;
   padding: 0.5rem;
-}
-
-details {
-  margin: 0;
-}
-
-summary {
-  background: #fff;
-  list-style: none;
-  padding: 0;
+  z-index: 100;
 }
 
 .dropdown-item {
   display: block;
   padding: 4px 8px 4px 16px;
   overflow: hidden;
-  color: var(--color-fg-default);
+  color: var(--form-text);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
