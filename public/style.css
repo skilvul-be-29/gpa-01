@@ -6,6 +6,10 @@
   --button-hover: #454545;
 }
 
+main {
+  margin-top: 2rem;
+}
+
 button {
   color: #fff;
   font-weight: bold;

@@ -1,9 +1,11 @@
 import { Auth } from '../lib/Auth.js';
+import { setupNavbar } from '../lib/setupNavbar.js';
 import { createThread } from '../lib/threads.js';
 
 if (!Auth.currentUser) {
   window.location.replace('/signin/');
 }
+setupNavbar(document.body);
 
 const form = document.querySelector('form');
 
@@ -12,13 +14,16 @@ form.addEventListener('submit', async (event) => {
   const formData = new FormData(form);
   const title = formData.get('title').trim();
   const content = formData.get('content').trim();
-
-  if (title === '' || content === '') {
-    alert('Please fill all the fields');
-    return;
-  }
+  if (title === '') return;
 
   const userId = Auth.currentUser.id;
-  const thread = await createThread({ title, content, userId });
+  const thread = await createThread(title, content, userId);
   window.location.replace(`/thread/detail.html?id=${thread.id}`);
+});
+
+const inputTitle = document.getElementById('title');
+const btnSubmit = document.getElementById('submit');
+
+inputTitle.addEventListener('input', () => {
+  btnSubmit.disabled = inputTitle.value.trim() === '';
 });
