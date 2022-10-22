@@ -27,7 +27,8 @@ export class Auth {
     if (userExists) {
       return false;
     }
-    await createUser(username, password);
+    const user = await createUser(username, password);
+    localStorage.setItem('currentUser', JSON.stringify(user));
     return true;
   }
 

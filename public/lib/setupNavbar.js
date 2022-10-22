@@ -23,13 +23,12 @@ export function setupNavbar(body) {
             <img src="${Auth.currentUser.avatar}" height="32" width="32" />
           </summary>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="/profile/">Profile</a>
-            <a class="dropdown-item" href="/signout/">Sign out</a>
+            <a class="dropdown-item" href="/signout/">Sign Out</a>
           </div>
         </details>
       </div>
     `;
   } else {
-    nav.innerHTML += `<button onclick="window.location.href='/signin/'">Sign in</button>`;
+    nav.innerHTML += `<button onclick="window.location.href='/signin/'">Sign In</button>`;
   }
 }

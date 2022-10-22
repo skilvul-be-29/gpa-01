@@ -1,10 +1,15 @@
 import { Auth } from '../lib/Auth.js';
+import { setupNavbar } from '../lib/setupNavbar.js';
 
 if (Auth.currentUser) {
-  window.location.href = '/';
+  window.location.replace('/');
 }
 
+setupNavbar(document.body);
+
 const form = document.querySelector('form');
+const err = document.getElementById('err');
+const btnSubmit = document.getElementById('submit');
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -12,10 +17,14 @@ form.addEventListener('submit', async (event) => {
   const username = formData.get('username').trim();
   const password = formData.get('password').trim();
 
-  const res = await Auth.signIn(username, password);
-  if (res) {
-    window.location.href = '/';
+  err.innerText = '';
+  btnSubmit.disabled = true;
+
+  if (await Auth.signIn(username, password)) {
+    window.location.replace('/');
   } else {
-    alert('Invalid credentials');
+    err.innerText = 'Incorrect username or password';
   }
+
+  btnSubmit.disabled = false;
 });
