@@ -8,6 +8,7 @@ if (!Auth.currentUser) {
 setupNavbar(document.body);
 
 const form = document.querySelector('form');
+const btnSubmit = document.getElementById('submit');
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -16,13 +17,13 @@ form.addEventListener('submit', async (event) => {
   const content = formData.get('content').trim();
   if (title === '') return;
 
+  btnSubmit.disabled = true;
   const userId = Auth.currentUser.id;
   const thread = await createThread(title, content, userId);
   window.location.replace(`/thread/detail.html?id=${thread.id}`);
 });
 
 const inputTitle = document.getElementById('title');
-const btnSubmit = document.getElementById('submit');
 
 inputTitle.addEventListener('input', () => {
   btnSubmit.disabled = inputTitle.value.trim() === '';
