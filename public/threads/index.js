@@ -5,11 +5,11 @@ import { getThreads } from '../lib/threads.js';
 setupNavbar(document.body);
 
 document.getElementById('create-thread').addEventListener('click', () => {
-  window.location.href = '/thread/create.html';
+  window.location.href = '/threads/create/';
 });
 
 const threads = await getThreads();
-const threadsHtml = document.querySelector('.threads');
+const threadsHtml = document.getElementById('threads');
 
 threads.forEach((thread) => {
   threadsHtml.innerHTML += buildThreadCard(thread);
@@ -25,7 +25,7 @@ function buildThreadCard({ createdAt, id, title, user: { username, avatar }, com
           <a class="text-black" href="#">${username}</a> ·
           <span>${time}</span>
         </div>
-        <a class="text-black" href="/thread/detail.html?id=${id}">
+        <a class="text-black" href="/threads/view/?id=${id}">
           <h2 class="title fw-bold text-black">${title}</h2>
         </a>
       </header>

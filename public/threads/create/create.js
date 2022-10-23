@@ -1,10 +1,11 @@
-import { Auth } from '../lib/Auth.js';
-import { setupNavbar } from '../lib/setupNavbar.js';
-import { createThread } from '../lib/threads.js';
+import { Auth } from '../../lib/Auth.js';
+import { setupNavbar } from '../../lib/setupNavbar.js';
+import { createThread } from '../../lib/threads.js';
 
 if (!Auth.currentUser) {
   window.location.replace('/signin/');
 }
+
 setupNavbar(document.body);
 
 const form = document.querySelector('form');
@@ -20,7 +21,7 @@ form.addEventListener('submit', async (event) => {
   btnSubmit.disabled = true;
   const userId = Auth.currentUser.id;
   const thread = await createThread(title, content, userId);
-  window.location.replace(`/thread/detail.html?id=${thread.id}`);
+  window.location.replace(`/threads/view/?id=${thread.id}`);
 });
 
 const inputTitle = document.getElementById('title');
