@@ -1,15 +1,15 @@
-import { Auth } from '../lib/Auth.js';
-import { createComment } from '../lib/comments.js';
-import { formatTime } from '../lib/formatTime.js';
-import { setupNavbar } from '../lib/setupNavbar.js';
-import { getThread } from '../lib/threads.js';
+import { Auth } from '../../lib/Auth.js';
+import { createComment } from '../../lib/comments.js';
+import { formatTime } from '../../lib/formatTime.js';
+import { setupNavbar } from '../../lib/setupNavbar.js';
+import { getThread } from '../../lib/threads.js';
 
 setupNavbar(document.body);
 
 const params = new URLSearchParams(window.location.search);
 const threadId = params.get('id');
 if (!threadId) {
-  window.location.replace('/thread/');
+  window.location.replace('/threads/');
 }
 
 const thread = await getThread(threadId);

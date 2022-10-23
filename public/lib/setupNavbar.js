@@ -9,7 +9,7 @@ export function setupNavbar(body) {
         </a>
       </div>
       <a class="text-black fw-600" href="/campus/">Campus</a>
-      <a class="text-black fw-600" href="/thread/">Threads</a>
+      <a class="text-black fw-600" href="/threads/">Threads</a>
     </nav>
     ${body.innerHTML}
   `;
