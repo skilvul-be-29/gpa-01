@@ -14,6 +14,7 @@ if (!threadId) {
 }
 
 const users = [];
+const thread = await getThread(threadId);
 await loadThread();
 
 const form = document.querySelector('form');
@@ -45,7 +46,7 @@ inputContent.addEventListener('input', () => {
 });
 
 async function loadThread() {
-  const { createdAt, title, content, userId } = await getThread(threadId);
+  const { createdAt, title, content, userId } = thread;
   const [user, comments] = await Promise.all([getUser(userId), getComments(threadId)]);
 
   document.title = title;
@@ -80,7 +81,22 @@ async function loadThread() {
     </article>
   `;
 
+  buildEditBtn();
   loadComments(comments);
+}
+
+function buildEditBtn() {
+  if (thread.userId === Auth.currentUser.id) {
+    const editBtn = '<button id="editBtn">Edit Thread</button>';
+
+    const section = document.querySelector('.thread-content');
+    section.innerHTML += editBtn;
+
+    document.getElementById('editBtn').addEventListener('click', function (event) {
+      event.preventDefault();
+      window.location.replace(`/threads/edit/?id=${threadId}`);
+    });
+  }
 }
 
 async function loadComments(comments) {

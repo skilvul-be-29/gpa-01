@@ -21,3 +21,14 @@ export async function getThreads() {
   const threads = await response.json();
   return threads.reverse();
 }
+
+export async function editThread(id, thread) {
+  const response = await fetch(`${API_URL}/threads/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(thread),
+  });
+  return response.json();
+}
