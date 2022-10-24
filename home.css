@@ -1,0 +1,49 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+header > div {
+  display: flex;
+  flex-direction: row;
+  margin: 32px 0 4px 0;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.logo {
+  max-height: 128px;
+  max-width: 128px;
+  object-fit: contain;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  min-height: 128px;
+  max-height: 128px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.details h2,
+.details p {
+  margin: 0;
+}
