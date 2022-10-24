@@ -8,7 +8,7 @@ export async function createUser(username, password) {
     },
     body: JSON.stringify({ username, password }),
   });
-  return await response.json();
+  return response.json();
 }
 
 export async function getUser(id) {
@@ -18,5 +18,5 @@ export async function getUser(id) {
 
 export async function getUsers() {
   const response = await fetch(`${API_URL}/users`);
-  return await response.json();
+  return response.json();
 }
