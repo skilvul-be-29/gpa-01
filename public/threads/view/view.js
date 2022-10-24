@@ -81,22 +81,16 @@ async function loadThread() {
     </article>
   `;
 
-  buildEditBtn();
-  loadComments(comments);
-}
-
-function buildEditBtn() {
-  if (thread.userId === Auth.currentUser.id) {
-    const editBtn = '<button id="editBtn">Edit Thread</button>';
-
-    const section = document.querySelector('.thread-content');
-    section.innerHTML += editBtn;
-
-    document.getElementById('editBtn').addEventListener('click', function (event) {
-      event.preventDefault();
-      window.location.replace(`/threads/edit/?id=${threadId}`);
+  if (userId === currentUser.id) {
+    const btnEdit = document.createElement('button');
+    btnEdit.innerText = 'Edit';
+    btnEdit.addEventListener('click', () => {
+      window.location.href = `/threads/edit/?id=${threadId}`;
     });
+
+    document.querySelector('.thread-content').appendChild(btnEdit);
   }
+  loadComments(comments);
 }
 
 async function loadComments(comments) {
