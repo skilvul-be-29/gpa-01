@@ -1,0 +1,10 @@
+.center {
+  margin: 6rem auto;
+  width: 50%;
+  min-width: 360px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}

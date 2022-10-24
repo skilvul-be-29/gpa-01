@@ -1,0 +1,29 @@
+main {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.logo-large {
+  max-height: 192px;
+  max-width: 192px;
+  object-fit: contain;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.details h2,
+.details p {
+  margin: 0;
+}
+
+@media screen and (max-width: 720px) {
+  main {
+    flex-direction: column;
+  }
+}
