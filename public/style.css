@@ -136,6 +136,10 @@ details[open] > summary::before {
   color: #000;
 }
 
+.text-grey {
+  color: #6c757d;
+}
+
 .text-red {
   color: #ff0000;
 }

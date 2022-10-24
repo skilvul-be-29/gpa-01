@@ -8,7 +8,7 @@ export function setupNavbar(body) {
           <img src="/assets/carkus.svg" alt="logo carkus" />
         </a>
       </div>
-      <a class="text-black fw-600" href="/campus/">Campus</a>
+      <a class="text-black fw-600" href="/">Find Campus</a>
       <a class="text-black fw-600" href="/threads/">Threads</a>
     </nav>
     ${body.innerHTML}
